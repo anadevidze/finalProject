@@ -14,7 +14,7 @@ public class PlaylistController {
     private PlaylistService playlistService;
 
     // Create a new playlist
-    @PostMapping
+    @PostMapping("/create-playlist")
     public ResponseEntity<Playlist> createPlaylist(@RequestBody Playlist playlist) {
         Playlist createdPlaylist = playlistService.createPlaylist(playlist);
         return ResponseEntity.ok(createdPlaylist);

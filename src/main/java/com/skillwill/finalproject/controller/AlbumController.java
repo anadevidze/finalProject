@@ -14,7 +14,7 @@ public class AlbumController {
     private AlbumService albumService;
 
     // Create a new album
-    @PostMapping
+    @PostMapping("/create-album")
     public ResponseEntity<Album> createAlbum(@RequestBody Album album) {
         Album createdAlbum = albumService.createAlbum(album);
         return ResponseEntity.ok(createdAlbum);
