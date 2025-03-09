@@ -13,14 +13,12 @@ public class AlbumController {
     @Autowired
     private AlbumService albumService;
 
-    // Create a new album
     @PostMapping("/create-album")
     public ResponseEntity<Album> createAlbum(@RequestBody Album album) {
         Album createdAlbum = albumService.createAlbum(album);
         return ResponseEntity.ok(createdAlbum);
     }
 
-    // Get album details by ID
     @GetMapping("/{albumId}")
     public ResponseEntity<Album> getAlbum(@PathVariable Long albumId) {
         Album album = albumService.getAlbumById(albumId);

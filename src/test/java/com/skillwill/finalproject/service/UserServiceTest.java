@@ -30,7 +30,6 @@ public class UserServiceTest {
     public void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        // Initialize mock user
         user = new User();
         user.setEmail("test@example.com");
         user.setPasswordHash("hashedPassword");
@@ -38,7 +37,6 @@ public class UserServiceTest {
 
     @Test
     public void testRegisterUser() {
-        // Mock behavior for userRepository.save()
         when(userRepository.save(any(User.class))).thenReturn(user);
 
         User savedUser = userService.registerUser(user);
@@ -51,7 +49,6 @@ public class UserServiceTest {
 
     @Test
     public void testVerifyUser_Success() {
-        // Mock behavior for findByVerificationCode()
         when(userRepository.findByVerificationCode(anyString())).thenReturn(Optional.of(user));
         when(userRepository.save(any(User.class))).thenReturn(user);
 
@@ -65,7 +62,6 @@ public class UserServiceTest {
 
     @Test
     public void testVerifyUser_Failure() {
-        // Mock behavior for findByVerificationCode()
         when(userRepository.findByVerificationCode(anyString())).thenReturn(Optional.empty());
 
         boolean isVerified = userService.verifyUser("invalidVerificationCode");
@@ -76,7 +72,6 @@ public class UserServiceTest {
 
     @Test
     public void testDeleteUser() {
-        // Test user deletion
         doNothing().when(userRepository).deleteById(anyLong());
 
         userService.deleteUser(1L);
@@ -86,7 +81,6 @@ public class UserServiceTest {
 
     @Test
     public void testGetUserById_Success() {
-        // Mock behavior for findById()
         when(userRepository.findById(anyLong())).thenReturn(Optional.of(user));
 
         User foundUser = userService.getUserById(1L);
@@ -97,7 +91,6 @@ public class UserServiceTest {
 
     @Test
     public void testGetUserById_Failure() {
-        // Mock behavior for findById()
         when(userRepository.findById(anyLong())).thenReturn(Optional.empty());
 
         Exception exception = assertThrows(RuntimeException.class, () -> {

@@ -25,7 +25,6 @@ public class ArtistService {
     }
 
     public Artist getArtistById(Long artistId) {
-        // Find the artist by ID. If not found, throw an exception or handle it as needed.
         return artistRepository.findById(artistId).orElse(new Artist());
     }
 }

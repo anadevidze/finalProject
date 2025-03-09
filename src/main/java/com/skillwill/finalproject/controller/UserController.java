@@ -13,14 +13,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // Register a new user
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
         User createdUser = userService.registerUser(user);
         return ResponseEntity.ok(createdUser);
     }
 
-    // Get user details by ID
     @GetMapping("/{userId}")
     public ResponseEntity<User> getUser(@PathVariable Long userId) {
         User user = userService.getUserById(userId);

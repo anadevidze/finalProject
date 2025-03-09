@@ -30,7 +30,6 @@ public class AlbumService {
     }
 
     public Album getAlbumById(Long albumId) {
-        // Find the album by ID. If not found, throw an exception or handle it as needed.
         return albumRepository.findById(albumId).orElse(new Album());
     }
 }

@@ -13,14 +13,12 @@ public class ArtistController {
     @Autowired
     private ArtistService artistService;
 
-    // Create a new artist
     @PostMapping
     public ResponseEntity<Artist> createArtist(@RequestBody Artist artist) {
         Artist createdArtist = artistService.createArtist(artist);
         return ResponseEntity.ok(createdArtist);
     }
 
-    // Get artist details by ID
     @GetMapping("/{artistId}")
     public ResponseEntity<Artist> getArtist(@PathVariable Long artistId) {
         Artist artist = artistService.getArtistById(artistId);

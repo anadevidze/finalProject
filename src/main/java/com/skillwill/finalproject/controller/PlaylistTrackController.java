@@ -15,7 +15,6 @@ public class PlaylistTrackController {
     @Autowired
     private PlaylistTrackService playlistTrackService;
 
-    // Add track to playlist
     @PostMapping("/{playlistId}/tracks/{trackId}")
     public ResponseEntity<String> addTrackToPlaylist(@PathVariable Long playlistId, @PathVariable Long trackId) {
         playlistTrackService.addTrackToPlaylist(playlistId, trackId);

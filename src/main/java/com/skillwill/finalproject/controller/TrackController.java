@@ -15,14 +15,12 @@ public class TrackController {
     @Autowired
     private TrackService trackService;
 
-    // Create a new track
     @PostMapping
     public ResponseEntity<Track> createTrack(@RequestBody Track track) {
         Track createdTrack = trackService.createTrack(track);
         return ResponseEntity.ok(createdTrack);
     }
 
-    // Get track by ID
     @GetMapping("/{trackId}")
     public ResponseEntity<Optional<Track>> getTrack(@PathVariable Long trackId) {
         Optional<Track> track = trackService.getTrack(trackId);

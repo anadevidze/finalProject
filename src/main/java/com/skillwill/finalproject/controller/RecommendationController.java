@@ -15,7 +15,6 @@ public class RecommendationController {
     @Autowired
     private RecommendationService recommendationService;
 
-    // Get recommendations for the user
     @GetMapping("/user/{userId}")
     public ResponseEntity<?> getRecommendations(@PathVariable Long userId) {
         var recommendations = recommendationService.recommendPlaylists(userId);
