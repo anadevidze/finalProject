@@ -35,7 +35,6 @@ public class ArtistServiceTest {
 
     @Test
     public void testCreateArtist() {
-        // Mock behavior for artistRepository.save()
         when(artistRepository.save(any(Artist.class))).thenReturn(artist);
 
         Artist createdArtist = artistService.createArtist(artist);
@@ -47,7 +46,6 @@ public class ArtistServiceTest {
 
     @Test
     public void testGetSimilarArtists() {
-        // Mock behavior for findSimilarArtistsByTracks()
         Artist similarArtist = new Artist(2L, artist.getUser(), "The Drummer", "Rock");
         List<Artist> similarArtists = Arrays.asList(similarArtist);
         when(artistRepository.findSimilarArtistsByTracks(anyLong())).thenReturn(similarArtists);
@@ -62,7 +60,6 @@ public class ArtistServiceTest {
 
     @Test
     public void testGetArtistById_Success() {
-        // Mock behavior for findById()
         when(artistRepository.findById(anyLong())).thenReturn(Optional.of(artist));
 
         Artist foundArtist = artistService.getArtistById(1L);
@@ -73,12 +70,11 @@ public class ArtistServiceTest {
 
     @Test
     public void testGetArtistById_Failure() {
-        // Mock behavior for findById()
         when(artistRepository.findById(anyLong())).thenReturn(Optional.empty());
 
         Artist foundArtist = artistService.getArtistById(1L);
 
         assertNotNull(foundArtist);
-        assertEquals(0L, foundArtist.getId());  // Default artist with empty ID
+        assertEquals(0L, foundArtist.getId());
     }
 }
